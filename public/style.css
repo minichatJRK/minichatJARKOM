@@ -1,0 +1,208 @@
+:root {
+    --bg-dark: #090e11;
+    --bg-sidebar: #111b21;
+    --bg-chat: #0b141a;
+    --msg-sent: #005c4b;
+    --msg-received: #202c33;
+    --accent-blue: #00a884; /* WA Green-ish, but let's shift to Blue as requested */
+    --accent-blue-real: #007bff;
+    --text-primary: #e9edef;
+    --text-secondary: #8696a0;
+    --border-color: #202c33;
+}
+
+/* Override WA green with Blue/Black theme as requested */
+:root {
+    --accent-blue: #1fa2ff;
+    --msg-sent: #004080;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Screen */
+#login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.login-box {
+    background: var(--bg-sidebar);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+}
+
+.login-box input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    width: 200px;
+    background: var(--bg-chat);
+    color: white;
+}
+
+.login-box button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background: var(--accent-blue);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* App Layout */
+.app-container {
+    display: flex; /* Flex is used here but hidden initially in HTML */
+    width: 95%;
+    height: 95%;
+    background-color: var(--bg-sidebar);
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 30%;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--bg-sidebar);
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.user-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.user-item {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user-item:hover {
+    background-color: var(--bg-chat);
+}
+
+/* Chat Area */
+.chat-area {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); /* Subtle pattern */
+    background-color: #0b141a; 
+    position: relative;
+}
+
+.chat-area::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(11, 20, 26, 0.9); /* Dark overlay for blue tone */
+    z-index: 0;
+}
+
+.chat-area > * {
+    z-index: 1;
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 60%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message.sent {
+    background-color: var(--msg-sent);
+    align-self: flex-end;
+    border-top-right-radius: 0;
+}
+
+.message.received {
+    background-color: var(--msg-received);
+    align-self: flex-start;
+    border-top-left-radius: 0;
+}
+
+.message .sender-name {
+    font-size: 11px;
+    color: var(--accent-blue);
+    font-weight: bold;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.input-area {
+    background-color: var(--bg-sidebar);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--bg-chat);
+    color: var(--text-primary);
+    margin-right: 10px;
+    outline: none;
+}
+
+.input-area button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.input-area button:hover {
+    color: var(--accent-blue);
+}

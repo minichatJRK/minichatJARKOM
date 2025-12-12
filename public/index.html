@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniChat WebSocket</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- Login Modal -->
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Welcome to MiniChat</h2>
+            <input type="text" id="username-input" placeholder="Enter your name...">
+            <button id="join-btn">Join Chat</button>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-container" style="display: none;">
+        <!-- Sidebar (Users) -->
+        <div class="sidebar">
+            <div class="header">
+                <h3>Participants</h3>
+            </div>
+            <div class="user-list" id="user-list">
+                <!-- Users will appear here -->
+                <div class="user-item">Everyone</div> 
+            </div>
+        </div>
+
+        <!-- Chat Area -->
+        <div class="chat-area">
+            <div class="header">
+                <h3 id="chat-header">Global Chat</h3>
+            </div>
+            <div class="messages" id="messages">
+                <!-- Messages go here -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
